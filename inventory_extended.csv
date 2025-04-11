@@ -1,0 +1,21 @@
+product_name,category,supplier,warehouse,customer_demand_score,current_stock,price,reorder_level
+apple,fruits,FreshFarm,Warehouse A,80,39,15.61,50
+banana,fruits,Tropico,Warehouse B,75,40,13.47,43
+milk,dairy,DairyPure,Warehouse A,90,45,46.99,53
+bread,bakery,BakeHouse,Warehouse C,70,44,15.61,54
+eggs,dairy,GoldenEggs,Warehouse A,85,26,31.21,59
+rice,grains,GrainCorp,Warehouse B,65,21,11.76,32
+toothpaste,personal care,Colgate,Warehouse C,95,34,29.81,37
+shampoo,personal care,Head&Shoulders,Warehouse C,88,18,8.71,53
+soap,personal care,Dove,Warehouse A,92,49,32.07,34
+chocolate,snacks,Cadbury,Warehouse B,78,20,26.88,50
+cheese,dairy,Cheesy,Warehouse A,66,48,41.69,41
+orange,fruits,CitrusFresh,Warehouse B,82,18,46.47,50
+butter,dairy,CreamyButter,Warehouse A,79,48,13.69,32
+yogurt,dairy,Yummy,Warehouse A,74,60,47.45,41
+tea,beverages,TeaHouse,Warehouse C,89,32,41.08,49
+coffee,beverages,CoffeeTime,Warehouse C,91,56,20.77,51
+sugar,grocery,Sweeto,Warehouse B,68,18,19.36,39
+salt,grocery,SaltCo,Warehouse B,65,16,11.38,58
+flour,grocery,BakeBest,Warehouse C,73,49,29.45,55
+oil,grocery,SunOil,Warehouse A,77,18,47.57,57

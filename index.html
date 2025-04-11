@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retail Inventory Checker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen flex flex-col items-center justify-center p-4">
+  <div class="w-full max-w-xl bg-white shadow-lg rounded-2xl p-6">
+    <h1 class="text-3xl font-bold text-center mb-6 text-blue-700">🛒 Retail Inventory Checker</h1>
+    
+    <div class="flex gap-4 mb-6">
+      <input 
+        id="productInput" 
+        type="text" 
+        placeholder="Enter product name..." 
+        class="flex-1 p-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <button 
+        onclick="checkInventory()" 
+        class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+      >
+        Search
+      </button>
+    </div>
+
+    <div id="resultBox" class="text-sm text-gray-800 space-y-2"></div>
+  </div>
+
+  <script>
+    async function checkInventory() {
+      const product = document.getElementById('productInput').value.trim();
+      const resultBox = document.getElementById('resultBox');
+      if (!product) {
+        resultBox.innerHTML = '<p class="text-red-500">Please enter a product name.</p>';
+        return;
+      }
+
+      resultBox.innerHTML = '<p class="text-gray-500">🔄 Checking inventory...</p>';
+
+      try {
+        const res = await fetch(`http://127.0.0.1:5050/check_inventory?product=${encodeURIComponent(product)}`);
+        if (!res.ok) throw new Error("Product not found or server error");
+        const data = await res.json();
+
+        resultBox.innerHTML = `
+          <div class="p-4 bg-gray-100 rounded-lg">
+            <p><strong>📦 Product:</strong> ${data.product}</p>
+            <p><strong>📊 Stock:</strong> ${data.stock}</p>
+            <p><strong>📉 Reorder Level:</strong> ${data.reorder_level}</p>
+            <p><strong>🏬 Warehouse:</strong> ${data.warehouse}</p>
+            <p><strong>🚚 Supplier:</strong> ${data.supplier}</p>
+            <p><strong>⭐ Customer Score:</strong> ${data.customer_score}</p>
+            <p><strong>📈 Predicted Demand:</strong> ${data.predicted_demand}</p>
+            <p><strong>🔁 Reorder Needed:</strong> ${data.reorder_needed}</p>
+            <p><strong>📦 Order Info:</strong> ${data.order_info || "N/A"}</p>
+          </div>
+        `;
+      } catch (error) {
+        resultBox.innerHTML = `<p class="text-red-500">❌ Error: ${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
